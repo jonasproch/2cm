@@ -6,9 +6,9 @@
     <title>2cm.cz – 2cm lásky a porozumění</title>
     <style>
         :root {
-            --bg: #faedf4;
+            --bg: #330e22;
             --primary: #e75480;
-            --secondary: #252525;
+            --secondary: #d1cdc7;
         }
 
         body {
@@ -22,20 +22,52 @@
             margin: 0;
         }
 
-        .circle {
-            width: 2cm;
-            height: 2cm;
-            background: var(--primary);
-            border-radius: 50%;
+        .ruler-wrapper {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.1em;
+            margin-bottom: 36px;
+            position: relative;
+            width: 2cm;
+        }
+
+        .ruler-label {
+            text-align: center;
+            color: var(--primary);
+            font-size: 1.05em;
             font-weight: bold;
-            box-shadow: 0 0 24px var(--primary);
-            margin-bottom: 32px;
-            border: 3px dashed var(--secondary);
+            letter-spacing: 2px;
+            margin-bottom: 2px;
+            position: absolute;
+            width: 100%;
+            top: -1.5em;
+            left: 0;
+        }
+
+        .ruler-line {
+            width: 2cm;
+            height: 0;
+            border-top: 2px solid var(--primary);
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .ruler-line::before,
+        .ruler-line::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 15px;
+            top: -7px;
+            border-left: 2px solid var(--primary);
+        }
+
+        .ruler-line::before {
+            left: 0;
+        }
+
+        .ruler-line::after {
+            right: 0;
         }
 
         h1 {
@@ -67,8 +99,9 @@
 </head>
 
 <body>
-    <div class="circle">
-        2&nbsp;cm
+    <div class="ruler-wrapper">
+        <span class="ruler-label">2cm</span>
+        <div class="ruler-line"></div>
     </div>
     <h1>2cm lásky a porozumění</h1>
     <div class="subtitle">No a? Aspoň se to vejde na doménu.</div>
